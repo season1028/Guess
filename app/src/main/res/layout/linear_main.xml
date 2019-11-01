@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:text="Please enter a number"
+        android:text="@string/please_enter_a_number"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
     <EditText
@@ -22,11 +22,11 @@
         android:inputType="numberDecimal" />
 
     <Button
-        android:id="@+id/click_botton"
+        android:id="@+id/click_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
         android:onClick="check"
-        android:text="Button" />
+        android:text="@string/button" />
 </LinearLayout>
