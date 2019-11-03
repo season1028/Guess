@@ -3,6 +3,7 @@ package com.mason.guess
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.appcompat.app.AlertDialog
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
+import androidx.room.RoomDatabase
 import com.mason.guess.data.GameDatabase
 import com.mason.guess.data.Record
 import kotlinx.android.synthetic.main.activity_main.*
@@ -42,13 +44,10 @@ class MaterialActivity : AppCompatActivity() {
         val nick = getSharedPreferences("guess",Context.MODE_PRIVATE)
             .getString("REC_NICKNAME",null)
         Log.d(TAG, "data: $count / $nick");
-        //Room test
-        val database = Room.databaseBuilder(this,GameDatabase::class.java,"game.db")
-            .build()
-        val record=Record("Jack",3)
-        Thread(){
-            database.recordDao().insert(record)
-        }.start()
+        //Room read test
+        AsyncTask.execute { val list =GameDatabase.getInstance(this)?.recordDao()?.getAll()
+            list?.forEach { Log.d(TAG, "record: ${it.nickname} ${it.counter}"); } }
+
 
     }
 
@@ -72,7 +71,7 @@ class MaterialActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-        Log.d(TAG, "onCStop:   ");
+        Log.d(TAG, "onStop:   ");
     }
 
     override fun onPause() {
