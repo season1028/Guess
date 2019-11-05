@@ -15,7 +15,7 @@ import androidx.room.RoomDatabase
 import com.mason.guess.data.GameDatabase
 import com.mason.guess.data.Record
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.ed_text
+
 
 import kotlinx.android.synthetic.main.activity_material.*
 import kotlinx.android.synthetic.main.content_material.*
