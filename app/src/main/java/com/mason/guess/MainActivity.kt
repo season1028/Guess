@@ -1,5 +1,6 @@
 package com.mason.guess
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -22,27 +23,8 @@ class MainActivity : AppCompatActivity() {
     val TAG =MainActivity::class.java.simpleName
     val functions= listOf<String>(
         "Camera",
-        "Invite friend",
-        "News",
-        "News",
-        "News",
-        "News",
-        "News",
-        "News",
-        "New5s",
-        "News",
-        "News",
-        "News",
-        "News",
-        "Ne2ws",
-        "News",
-        "Ne4ws",
-        "News",
-        "News",
-        "New6s",
-        "New6s",
-        "New6s",
-        "Maps",
+        "Guess number",
+        "Record list",
         "Maps")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,7 +51,19 @@ class MainActivity : AppCompatActivity() {
         override fun onBindViewHolder(holder: functionHolder, position: Int) {
             //****
               holder.nameTexr.text =functions.get(position)
+              holder.itemView.setOnClickListener {
+                  functiononClick(position)
+              }
         }
+    }
+
+    private fun functiononClick(position: Int) {
+        when(position){
+            1->startActivity(Intent(this,MaterialActivity::class.java))
+            //**
+            else -> return
+        }
+
     }
 
     class functionHolder(view: View):RecyclerView.ViewHolder(view){
